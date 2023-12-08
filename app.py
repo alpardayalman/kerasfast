@@ -33,6 +33,7 @@ class Recognition:
     def run(self):
         st.title("Detektif v0.1")
         st.write("Streamlit sayfasına hoş geldiniz")
+        st.write('Ucak Otomobil Kuş Kedi Geyik Köpek Kurbağa At Gemi Kamyon resmi kullanınız :)')
         uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
 
         if uploaded_file is not None:
