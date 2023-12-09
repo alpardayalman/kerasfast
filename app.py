@@ -37,10 +37,8 @@ class Recognition:
 
         placeholder = st.empty()
 
-    # Check if the user has accepted cookies
         if not placeholder.checkbox("I accept the use of cookies", key="cookie_checkbox"):
         # User has not accepted cookies, show the banner
-    # Display the cookie banner
             with placeholder:
                 st.info("This website uses cookies. By continuing to use this site, you accept our use of cookies.")
 
