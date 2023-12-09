@@ -39,6 +39,7 @@ class Recognition:
         uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
 
         if self.accepted:
+            self.accepted = True
             if uploaded_file is not None:
                 self.image = Image.open(uploaded_file)
                 st.image(self.image, caption="Uploaded Image", use_column_width=True)
