@@ -5,6 +5,7 @@ import os
 import numpy as np
 
 model = models.load_model("baseline.keras")
+accepted = False
 
 class Recognition:
 
@@ -38,8 +39,8 @@ class Recognition:
         st.write('Ucak, Otomobil, Kuş, Kedi, Geyik, Köpek, Kurbağa, At, Gemi ve Kamyon resmi kullanınız :)')
         uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
 
-        if self.accepted:
-            self.accepted = True
+        if accepted:
+            accepted = True
             if uploaded_file is not None:
                 self.image = Image.open(uploaded_file)
                 st.image(self.image, caption="Uploaded Image", use_column_width=True)
@@ -116,7 +117,7 @@ class Recognition:
             """)
             if st.button("I Accept"):
                 st.success("You have accepted the terms and conditions! You may now use the application")
-                self.accepted = True
+                accepted = True
 
 
 def main():
