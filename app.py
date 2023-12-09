@@ -38,12 +38,13 @@ class Recognition:
         st.write('Ucak, Otomobil, Kuş, Kedi, Geyik, Köpek, Kurbağa, At, Gemi ve Kamyon resmi kullanınız :)')
         uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
 
-        if not self.accepted:
+        if self.accepted:
+            elif uploaded_file is not None:
+                self.image = Image.open(uploaded_file)
+                st.image(self.image, caption="Uploaded Image", use_column_width=True)
+                self.predict_image(image=self.image)
+        else:
             st.error("Klasifikasyon Uygulamasini kullanmak icin lutfen kvkk metinini onaylayiniz.")
-        elif uploaded_file is not None:
-            self.image = Image.open(uploaded_file)
-            st.image(self.image, caption="Uploaded Image", use_column_width=True)
-            self.predict_image(image=self.image)
             
     def show_acceptance_popup(self):
         with st.expander("Terms and Conditions"):
