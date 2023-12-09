@@ -6,6 +6,8 @@ import numpy as np
 
 model = models.load_model("baseline.keras")
 
+accepted_t_and_c = False
+
 class Recognition:
 
     def __init__(self, class_names, model=model):
@@ -32,16 +34,16 @@ class Recognition:
 
     def run(self):
         self.show_acceptance_popup()
-
         st.title("Detektif v0.1")
         st.write("Streamlit sayfasına hoş geldiniz")
-        st.write('Ucak Otomobil Kuş Kedi Geyik Köpek Kurbağa At Gemi Kamyon resmi kullanınız :)')
-        uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
-
-        if uploaded_file is not None:
-            self.image = Image.open(uploaded_file)
-            st.image(self.image, caption="Uploaded Image", use_column_width=True)
-            self.predict_image(image=self.image)
+        if accepted_t_and_c:
+            st.write('Ucak Otomobil Kuş Kedi Geyik Köpek Kurbağa At Gemi Kamyon resmi kullanınız :)')
+            uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
+    
+            if uploaded_file is not None:
+                self.image = Image.open(uploaded_file)
+                st.image(self.image, caption="Uploaded Image", use_column_width=True)
+                self.predict_image(image=self.image)
     
     def show_acceptance_popup(self):
         with st.expander("Terms and Conditions"):
@@ -50,7 +52,8 @@ class Recognition:
                 Please read the terms and conditions carefully before proceeding.
             """)
             if st.button("I Accept"):
-                st.success("You have accepted the terms and conditions!")
+                st.success("You have accepted the terms and conditions! You may now use the application")
+                accepted_t_and_c = True
 
 
 def main():
