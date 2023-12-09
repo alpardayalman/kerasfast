@@ -33,18 +33,20 @@ class Recognition:
             st.write(f"{best_prob*100:0.2f}")
 
     def run(self):
-        self.show_acceptance_popup()
         st.title("Detektif v0.1")
-        st.write("Streamlit sayfasına hoş geldiniz")
+        self.show_acceptance_popup()
+        st.write("Klasifikasyon Uygulamasi")
         if accepted_t_and_c:
-            st.write('Ucak Otomobil Kuş Kedi Geyik Köpek Kurbağa At Gemi Kamyon resmi kullanınız :)')
+            st.write('Ucak, Otomobil, Kuş, Kedi, Geyik, Köpek, Kurbağa, At, Gemi ve Kamyon resmi kullanınız :)')
             uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
     
             if uploaded_file is not None:
                 self.image = Image.open(uploaded_file)
                 st.image(self.image, caption="Uploaded Image", use_column_width=True)
                 self.predict_image(image=self.image)
-    
+        else:
+            st.write("Klasifikasyon Uygulamasini kullanmak icin lutfen kvkk metinini onaylayiniz.")
+            
     def show_acceptance_popup(self):
         with st.expander("Terms and Conditions"):
             st.write("""
