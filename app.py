@@ -31,6 +31,8 @@ class Recognition:
             st.write(f"{best_prob*100:0.2f}")
 
     def run(self):
+        with st.expander("Pop-up Content"):
+            st.write("This is the content of the pop-up!")
         st.title("Detektif v0.1")
         st.write("Streamlit sayfasına hoş geldiniz")
         st.write('Ucak Otomobil Kuş Kedi Geyik Köpek Kurbağa At Gemi Kamyon resmi kullanınız :)')
@@ -58,8 +60,6 @@ def main():
     8: 'Gemi',
     9: 'Kamyon',
     }
-    with st.expander("Pop-up Content"):
-        st.write("This is the content of the pop-up!")
 
     Recognition(class_names=class_names, model=model).run()
 
