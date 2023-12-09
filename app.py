@@ -58,6 +58,8 @@ def main():
     8: 'Gemi',
     9: 'Kamyon',
     }
+    with st.expander("Pop-up Content"):
+            st.write("This is the content of the pop-up!")
 
     Recognition(class_names=class_names, model=model).run()
 
