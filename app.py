@@ -6,13 +6,12 @@ import numpy as np
 
 model = models.load_model("baseline.keras")
 
-accepted_t_and_c = False
-
 class Recognition:
 
     def __init__(self, class_names, model=model):
         self.model = model
         self.class_names = class_names
+        self.accepted = False
 
     def format_image(self):
          self.image = self.image.convert("RGB")
@@ -39,7 +38,7 @@ class Recognition:
         st.write('Ucak, Otomobil, Kuş, Kedi, Geyik, Köpek, Kurbağa, At, Gemi ve Kamyon resmi kullanınız :)')
         uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
 
-        if not accepted_t_and_c:
+        if not self.accepted:
             st.error("Klasifikasyon Uygulamasini kullanmak icin lutfen kvkk metinini onaylayiniz.")
         elif uploaded_file is not None:
             self.image = Image.open(uploaded_file)
@@ -115,7 +114,7 @@ class Recognition:
             """)
             if st.button("I Accept"):
                 st.success("You have accepted the terms and conditions! You may now use the application")
-                accepted_t_and_c = True
+                self.accepted = True
 
 
 def main():
