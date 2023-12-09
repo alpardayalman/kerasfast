@@ -35,7 +35,6 @@ class Recognition:
     def run(self):
         st.title("Detektif v0.1")
         st.write("Klasifikasyon Uygulamasi")
-        self.show_acceptance_popup()
         st.write('Ucak, Otomobil, Kuş, Kedi, Geyik, Köpek, Kurbağa, At, Gemi ve Kamyon resmi kullanınız :)')
         uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
 
