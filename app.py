@@ -36,16 +36,15 @@ class Recognition:
         st.title("Detektif v0.1")
         st.write("Klasifikasyon Uygulamasi")
         self.show_acceptance_popup()
-        if accepted_t_and_c:
-            st.write('Ucak, Otomobil, Kuş, Kedi, Geyik, Köpek, Kurbağa, At, Gemi ve Kamyon resmi kullanınız :)')
-            uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
-    
-            if uploaded_file is not None:
-                self.image = Image.open(uploaded_file)
-                st.image(self.image, caption="Uploaded Image", use_column_width=True)
-                self.predict_image(image=self.image)
-        else:
-            st.write("Klasifikasyon Uygulamasini kullanmak icin lutfen kvkk metinini onaylayiniz.")
+        st.write('Ucak, Otomobil, Kuş, Kedi, Geyik, Köpek, Kurbağa, At, Gemi ve Kamyon resmi kullanınız :)')
+        uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
+
+        if not accepted_t_and_c:
+            st.error("Klasifikasyon Uygulamasini kullanmak icin lutfen kvkk metinini onaylayiniz.")
+        elif uploaded_file is not None:
+            self.image = Image.open(uploaded_file)
+            st.image(self.image, caption="Uploaded Image", use_column_width=True)
+            self.predict_image(image=self.image)
             
     def show_acceptance_popup(self):
         with st.expander("Terms and Conditions"):
@@ -117,7 +116,6 @@ class Recognition:
             if st.button("I Accept"):
                 st.success("You have accepted the terms and conditions! You may now use the application")
                 accepted_t_and_c = True
-                self.run()
 
 
 def main():
