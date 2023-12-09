@@ -31,23 +31,8 @@ class Recognition:
             st.write(f"{best_prob*100:0.2f}")
 
     def run(self):
-        if st.button("Click me to open the pop-up"):
-            with st.expander("Pop-up Content"):
-                st.write("This is the content of the pop-up!")
+        self.show_acceptance_popup()
 
-        placeholder = st.empty()
-
-        if not placeholder.checkbox("I accept the use of cookies", key="cookie_checkbox"):
-        # User has not accepted cookies, show the banner
-            with placeholder:
-                st.info("This website uses cookies. By continuing to use this site, you accept our use of cookies.")
-
-
-
-
-
-
-        
         st.title("Detektif v0.1")
         st.write("Streamlit sayfasına hoş geldiniz")
         st.write('Ucak Otomobil Kuş Kedi Geyik Köpek Kurbağa At Gemi Kamyon resmi kullanınız :)')
@@ -58,7 +43,14 @@ class Recognition:
             st.image(self.image, caption="Uploaded Image", use_column_width=True)
             self.predict_image(image=self.image)
     
-    
+    def show_acceptance_popup(self):
+        with st.expander("Terms and Conditions"):
+            st.write("""
+                By clicking the button, you agree to the terms and conditions of using this website.
+                Please read the terms and conditions carefully before proceeding.
+            """)
+            if st.button("I Accept"):
+                st.success("You have accepted the terms and conditions!")
 
 
 def main():
