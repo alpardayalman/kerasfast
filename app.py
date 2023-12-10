@@ -38,7 +38,7 @@ class Recognition:
         st.write('Ucak, Otomobil, Kuş, Kedi, Geyik, Köpek, Kurbağa, At, Gemi ve Kamyon resmi kullanınız :)')
         uploaded_file = st.file_uploader("Bir resim secin...", type=["jpg", "jpeg", "png"])
 
-        with st.expander("Terms and Conditions"):
+        with st.expander("KVKK Metni"):
             st.write("""
             KİŞİSEL VERİLERİN İŞLENMESİ AYDINLATMA METNİ
              
