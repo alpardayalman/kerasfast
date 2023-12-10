@@ -104,17 +104,17 @@ class Recognition:
              
             İşbu Aydınlatma Metni KVKK ve ilgili mevzuat uyarınca veri sahiplerini bilgilendirmek ve aydınlatmak amacı ile hazırlanmıştır.
             """)
-            if st.button("I Accept"):
-                st.success("You have accepted the terms and conditions! You may now use the application")
-                accepted = True
-        if accepted:
-            accepted = True
-            if uploaded_file is not None:
-                self.image = Image.open(uploaded_file)
-                st.image(self.image, caption="Uploaded Image", use_column_width=True)
-                self.predict_image(image=self.image)
-        else:
-            st.error("Klasifikasyon Uygulamasini kullanmak icin lutfen kvkk metinini onaylayiniz.")
+        #     if st.button("I Accept"):
+        #         st.success("You have accepted the terms and conditions! You may now use the application")
+        #         accepted = True
+        # if accepted:
+        #     accepted = True
+        if uploaded_file is not None:
+            self.image = Image.open(uploaded_file)
+            st.image(self.image, caption="Uploaded Image", use_column_width=True)
+            self.predict_image(image=self.image)
+        # else:
+        #     st.error("Klasifikasyon Uygulamasini kullanmak icin lutfen kvkk metinini onaylayiniz.")
 
 
 def main():
